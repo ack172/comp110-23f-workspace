@@ -8,40 +8,40 @@ if len(word) != 5:
     print("Error: Word must contain 5 characters")
 if len(word) != 5:
     exit()
-letter: str = input("Enter a single character: ")
-if len(letter) != 1:
+char: str = input("Enter a single character: ")
+if len(char) != 1:
     print("Error: Character must be a single character.")
-if len(letter) != 1:
+if len(char) != 1:
     exit()
-print("Searching for " + letter + " in " + word )
+print("Searching for " + char + " in " + word)
 
 # checking indices for matches
-if word[0] == letter:
-    print(letter + " found at index 0")
-if word[1] == letter:
-    print(letter + " found at index 1")
-if word[2] == letter:
-    print(letter + " found at index 2")
-if word[3] == letter:
-    print(letter + " found at index 3")
-if word[4] == letter:
-    print(letter + " found at index 4")
+if word[0] == char:
+    print(char + " found at index 0")
+if word[1] == char:
+    print(char + " found at index 1")
+if word[2] == char:
+    print(char + " found at index 2")
+if word[3] == char:
+    print(char + " found at index 3")
+if word[4] == char:
+    print(char + " found at index 4")
 
 # counting matching indexes
-num_of_matching_indexes: int= 0
-if word[0] == letter:
+num_of_matching_indexes: int = 0
+if word[0] == char:
     num_of_matching_indexes = num_of_matching_indexes + 1
-if word[1] == letter:
+if word[1] == char:
     num_of_matching_indexes = num_of_matching_indexes + 1 
-if word[2] == letter:
+if word[2] == char:
     num_of_matching_indexes = num_of_matching_indexes + 1 
-if word[3] == letter:
+if word[3] == char:
     num_of_matching_indexes = num_of_matching_indexes + 1 
-if word[4] == letter:
+if word[4] == char:
     num_of_matching_indexes = num_of_matching_indexes + 1  
 if num_of_matching_indexes == 0:
-    print("No instance of " + letter + " found in " + word)  
+    print("No instances of " + char + " found in " + word)  
 if num_of_matching_indexes == 1:
-    print(str(num_of_matching_indexes) + " instance of " + letter + " found in " + word)  
+    print(str(num_of_matching_indexes) + " instance of " + char + " found in " + word)  
 if num_of_matching_indexes > 1:
-    print(str(num_of_matching_indexes) + " instances of " + letter + " found in " + word)  
+    print(str(num_of_matching_indexes) + " instances of " + char + " found in " + word)  
