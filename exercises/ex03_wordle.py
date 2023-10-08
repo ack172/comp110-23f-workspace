@@ -2,6 +2,7 @@
 
 __author__ = "730385079"
 
+
 def contains_char(searched_string: str, search_character: str) -> bool:
     """Purpose of contains_char is to see if the guessed string contains a given character."""
     # search character is the character that is being searched for within searched string
@@ -16,6 +17,7 @@ def contains_char(searched_string: str, search_character: str) -> bool:
             # increase index to see if there are any matches within the word
             idx += 1
     return False
+
 
 def emojified(guess: str, secret: str) -> str:
     """Returns a string of emojis whose color codifies the match of a single character to a word."""
@@ -41,12 +43,14 @@ def emojified(guess: str, secret: str) -> str:
         idx += 1
     return resulting_emoji
 
+
 def input_guess(expected_length: int) -> str:
-    """Function must return the user's guess of correct length to the caller. """
+    """Function must return the user's guess of correct length to the caller."""
     word: str = input(f"Enter a {expected_length} character word: ")
     while len(word) != expected_length: 
         word = input(f"That wasn't {expected_length} chars! Try again: ")
     return word
+
 
 def main() -> None:
     """The entrypoint of the program and main game loop."""
@@ -54,16 +58,23 @@ def main() -> None:
     secret_word: str = "codes"
     # guess number is variable to determine the number of turns the user has left
     guess_number = 1
-    while guess_number <= 6:
+    exit_game = False
+    while not exit_game:
         print(f" === Turn {guess_number}/6 === ")
         guess: str = input_guess(len(secret_word))
         print(emojified(guess, secret_word))
         if guess == secret_word:
-            print(f"You won in {guess_number}/6 turns! ")
             # program exits early if the user reaches the guess word
-            exit()
-        guess_number += 1
-    print("X/6 - Sorry, try again tomorrow!")
+            exit_game = True
+        else:
+            guess_number += 1
+        if guess_number > 6:
+            exit_game = True
+    if guess == secret_word:
+        print(f"You won in {guess_number}/6 turns! ")
+    else:
+        print("X/6 - Sorry, try again tomorrow!")
+
 
 # allows function to be run as a module
 if __name__ == "__main__":
