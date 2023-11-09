@@ -17,12 +17,15 @@ def invert(input: dict[str, str]) -> dict[str, str]:
 def favorite_color(names_colors: dict[str, str]) -> str:
     """Given a list of names and colors, returns color that appears most."""
     output: dict[str, int] = {}
+    # initialize values to 0
     for key in names_colors:
         output[names_colors[key]] = 0
+    # add when encounter multiple instances of key
     for key in names_colors:
         output[names_colors[key]] += 1
     max: int = 0
     favorite_str: str = ""
+    # if output[key] is greater than max, output[key] becomes new max
     for key in output:
         if max < output[key]:
             max = output[key]
@@ -31,8 +34,9 @@ def favorite_color(names_colors: dict[str, str]) -> str:
 
 
 def count(input: list[str]) -> dict[str, int]:
-    """Each value.... whagtever"""
+    """Produces a list where each key is a unique value in the given list and each value associated is the count of the number of times that value appeared in the input list."""
     output: dict[str, int] = {}
+    # for loop iterates through keys in the input
     for key in input:
         if key in output:
             output[key] += 1
@@ -57,7 +61,12 @@ def alphabetizer(input: list[str]) -> dict[str, list[str]]:
 
 def update_attendance(input: dict[str, list[str]], day: str, student: str) -> dict[str, list[str]]:
     """This function will mutate and return that dictionary."""
+    if len(day) == 0 or len(student) == 0:
+        return input
     if day in input:
+        for person in input[day]:
+            if person == student:
+                return input
         input[day].append(student)
     else:
         new_list: list[str] = []
